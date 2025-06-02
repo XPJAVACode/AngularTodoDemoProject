@@ -5,14 +5,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-rotuing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ListTodoComponent } from './list-todo/list-todo.component';
+import { FooterComponent } from './footer/footer.component';
+import { WelcomeComponent } from './welcome/welcome/welcome.component';
+import { HttpInterceptorService } from './service/http/http-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ListTodoComponent
+    ListTodoComponent,
+    FooterComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +25,11 @@ import { ListTodoComponent } from './list-todo/list-todo.component';
     AppRoutingModule,
     HttpClientModule 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+              }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

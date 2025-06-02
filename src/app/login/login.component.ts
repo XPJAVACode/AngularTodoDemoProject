@@ -24,11 +24,12 @@ export class LoginComponent {
     };
     this.authService.handleBEAuthentication(postData).subscribe({
       next: (successResponse) =>{
+        this.isLoginSuccess = true;
         console.log(successResponse);
         //Its a success, so we will naviagte to list-todo page
         //backend call here to get the firstName with the help of email
-        let firstName = '';
-        console.log(firstName);
+        let firstName = "Suman";
+        this.route.navigate(['/welcome', firstName], {queryParams:{id:"weilfhulqwhc"}});
       },
       error: (errorValue) =>{
         console.log(errorValue);
