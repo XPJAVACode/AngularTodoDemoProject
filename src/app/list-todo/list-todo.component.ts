@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { TodoService } from '../service/todo.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class ListTodoComponent implements OnInit{
   userId:string="";
   name: string = "";
   deleteMessage: string="";
-  constructor(private activateRoute: ActivatedRoute, private todoService: TodoService){}
+  constructor(private activateRoute: ActivatedRoute, private todoService: TodoService, private route: Router){}
 
   ngOnInit(): void {
     this.activateRoute.queryParams.subscribe(queryParams=>{
@@ -33,7 +33,7 @@ export class ListTodoComponent implements OnInit{
     });
   }
 
- deleteTodo(id: BigInt): void{
+ deleteTodo(id: string): void{
    //delete a todo
    this.todoService.deleteTodo(id).subscribe({
     next: (res)=>{
@@ -43,8 +43,8 @@ export class ListTodoComponent implements OnInit{
    });
  }
 
- updateTodo(id: BigInt) : void{
-  //todo update
+ updateTodo(id: string) : void{
+   this.route.navigate(["/todo", id]);
  }
 
  addTodo(){

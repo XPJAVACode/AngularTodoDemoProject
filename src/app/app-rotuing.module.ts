@@ -3,12 +3,14 @@ import { LoginComponent } from "./login/login.component";
 import { NgModule } from "@angular/core";
 import { ListTodoComponent } from "./list-todo/list-todo.component";
 import { WelcomeComponent } from "./welcome/welcome/welcome.component";
+import { TodoComponent } from "./todo/todo.component";
 
 const routes: Routes = [
     {path: '', component: LoginComponent},
     {path:'login', component:LoginComponent},
     {path: 'welcome/:name', component: WelcomeComponent},
-    {path: 'todo/:name', component: ListTodoComponent},
+    {path: 'todos/:name', component: ListTodoComponent},
+    {path: 'todo/:id', component: TodoComponent},
     {path: '**', component:LoginComponent} //This needs to be replaced with an error component
 ];
 

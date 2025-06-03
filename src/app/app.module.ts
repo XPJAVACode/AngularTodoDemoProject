@@ -10,6 +10,7 @@ import { ListTodoComponent } from './list-todo/list-todo.component';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './welcome/welcome/welcome.component';
 import { HttpInterceptorService } from './service/http/http-interceptor.service';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpInterceptorService } from './service/http/http-interceptor.service'
     LoginComponent,
     ListTodoComponent,
     FooterComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
