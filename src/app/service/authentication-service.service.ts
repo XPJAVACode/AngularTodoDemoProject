@@ -15,6 +15,7 @@ export class AuthenticationServiceService {
       map(data=>{
          const token = data.headers.get('Authorizzation');
          if(token){
+          
           sessionStorage.setItem("Auth_token", token);
          }
          return data;

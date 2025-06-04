@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-rotuing.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ListTodoComponent } from './list-todo/list-todo.component';
@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './welcome/welcome/welcome.component';
 import { HttpInterceptorService } from './service/http/http-interceptor.service';
 import { TodoComponent } from './todo/todo.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,15 @@ import { TodoComponent } from './todo/todo.component';
     ListTodoComponent,
     FooterComponent,
     WelcomeComponent,
-    TodoComponent
+    TodoComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule 
+    HttpClientModule,
+    ReactiveFormsModule 
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

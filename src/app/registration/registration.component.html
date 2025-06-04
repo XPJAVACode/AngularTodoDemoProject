@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>User Registration</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label>User Name</label>
+            <input formControlName="username" type="text">
+            <div *ngIf="registerForm.controls['username'].invalid">
+                <span *ngIf="registerForm.controls['username'].errors?.required">Username is a required field</span>
+                <span *ngIf="registerForm.controls['username'].errors?.minLength">Minimum 6 characters are required</span>
+            </div>
+        </div>
+
+        <div>
+            <label>Email</label>
+            <input formControlName="email" type="email">
+            <div *ngIf="registerForm.controls['email'].invalid">
+                <span *ngIf="registerForm.controls['email'].errors?.required">Email is a required field</span>
+                <span *ngIf="registerForm.controls['email'].errors?.email">Wrong</span>
+            </div>
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input formControlName="password" type="password">
+            <div *ngIf="registerForm.controls['password'].invalid">
+                <span *ngIf="registerForm.controls['password'].errors?.required">Password is a required field</span>
+                <span *ngIf="registerForm.controls['password'].errors?.minLength">Wrong</span>
+                <span *ngIf="registerForm.controls['password'].errors?.maxLength">Wrong</span>
+            </div>
+        </div>
+
+        <div>
+            <label>Conform Password</label>
+            <input formControlName="conformPassword" type="password">
+            <div *ngIf="registerForm.hasError('mismatch') && registerForm.get('conformPassword')?.touched">
+                Password do not match
+            </div>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>

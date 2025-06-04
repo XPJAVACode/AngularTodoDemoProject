@@ -35,12 +35,10 @@ export class TodoComponent implements OnInit{
 
   saveTodo(form:NgForm){
     console.log(form);
-    if(form.valid){
       if(this.todoId != -1){
         this.todoService.updateTodo(this.todoId, this.todoObject).subscribe({});
       }else{
         this.todoService.createTodo(this.todoObject).subscribe({});
       }
-    }
   }
 }

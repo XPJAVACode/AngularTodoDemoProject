@@ -4,20 +4,22 @@
         <fieldset class="form-group">
             <label>Name</label>
             <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="todoObject.name" required="required">
+            <span *ngIf="todoForm.touched && todoForm.invalid" class="alert alert-warning">Name is required</span>
         </fieldset>
 
         <fieldset class="form-group">
             <label>Descrption</label>
             <input type="text" class="form-control" #name="ngModel" name="descrption" [(ngModel)]="todoObject.description" required="required">
+            <span *ngIf="todoForm.touched && todoForm.invalid" class="alert alert-warning">Descrption is required</span>
         </fieldset>
 
         <fieldset class="form-group">
             <label>Target Date</label>
             <input type="date" class="form-control" name="targetDate" [ngModel]="todoObject.targetDate |date: 'yyyy-MM-dd'" 
-                 (ngModelChange)="todoObject.targetDate = $event"  required="required">
+                 (ngModelChange)="todoObject.targetDate = $event">
         </fieldset>
         <div>
-            <button type="submit" class="btn btn-success">{{buttonName}}</button>
+            <button type="submit" [disabled]="todoForm.invalid" class="btn btn-success">{{buttonName}}</button>
         </div>
     </form>
 </div>
