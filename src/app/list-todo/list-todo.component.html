@@ -16,12 +16,12 @@
         <tbody>
             <tr *ngFor="let todo of todos">
                 <td>{{todo.id}}</td>
-                <td>{{todo.Name}}</td>
-                <td>{{todo.Description}}</td>
+                <td>{{todo.name}}</td>
+                <td>{{todo.description}}</td>
                 <td>{{todo.isCompleted}}</td>
                 <td>{{todo.endTime}}</td>
-                <td><button class="btn btn-warning" (click)="deleteTodo(todo.id)"></button>Delete</td>
-                <td><button class="btn btn-primary" (click)="updateTodo(todo.id)"></button>Update</td>
+                <td><button class="btn btn-warning" (click)="deleteTodo(todo.id)">Delete</button></td>
+                <td><button class="btn btn-primary" (click)="updateTodo(todo.id)">Update</button></td>
             </tr>
         </tbody>
     </table>

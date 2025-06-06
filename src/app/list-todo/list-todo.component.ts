@@ -8,7 +8,7 @@ import { TodoService } from '../service/todo.service';
   styleUrls: ['./list-todo.component.css']
 })
 export class ListTodoComponent implements OnInit{
- //http://localhost:4200/todo/Suman?id=edsdwofeehwfieohcefnsfhhhefajo
+ //http://localhost:4200/todos/Suman?id=edsdwofeehwfieohcefnsfhhhefajo
   todos:any;
   userId:string="";
   name: string = "";

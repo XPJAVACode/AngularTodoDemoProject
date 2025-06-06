@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -10,25 +10,32 @@ export class RegistrationComponent implements OnInit{
 
   registerForm: FormGroup = new FormGroup({});
   constructor(private fb: FormBuilder){}
-
   ngOnInit(): void {
-   this.registerForm = this.fb.group({
-     username :['', [Validators.required, Validators.minLength(6)]],
-     email: ['', [Validators.required, Validators.email]],
-     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
-     confirmPassword: ['', Validators.required]
-   },{
+    this.registerForm = this.fb.group({
+      username: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
+      confirmPassword: ['', Validators.required]
+    }, {
       validators: this.passwordValidator
-   });
-
+    });
   }
-  passwordValidator(){
-    const password = this.registerForm.get('password')?.value;
-    const confPassword = this.registerForm.get('confirmPassword')?.value;
-    return password === confPassword ? null : {mismatch: true};
+  passwordValidator(formGroup: AbstractControl): ValidationErrors | null {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+  
+    if (password !== confirmPassword) {
+      return { passwordMismatch: true };
+    }
+    return null;
   }
-  onSubmit(){
 
+  onSubmit() {
+    if (this.registerForm.valid) {
+      console.log(this.registerForm.value);
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
 }

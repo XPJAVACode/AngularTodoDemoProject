@@ -29,7 +29,7 @@ export class LoginComponent {
         //Its a success, so we will naviagte to list-todo page
         //backend call here to get the firstName with the help of email
         let firstName = "Suman";
-        this.route.navigate(['/welcome', firstName], {queryParams:{id:"weilfhulqwhc"}});
+        this.route.navigate(['/welcome', firstName], {queryParams:{id:sessionStorage.getItem('user_id')}});
       },
       error: (errorValue) =>{
         console.log(errorValue);

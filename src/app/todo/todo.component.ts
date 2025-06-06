@@ -12,7 +12,7 @@ export class TodoComponent implements OnInit{
 
   //http://localhost:4200/todo/2
   todoId:any;
-  todoObject:any={"name":"", "description":"", "targetDate": new Date()};
+  todoObject:any={name:"", description:"", targetDate: new Date()};
   buttonName="Add";
   constructor(private activatedRoute: ActivatedRoute, private todoService: TodoService){}
   
@@ -23,7 +23,8 @@ export class TodoComponent implements OnInit{
     if(this.todoId != -1){
       this.todoService.getATodo(this.todoId).subscribe({
         next: (successReposne)=>{
-          this.todoObject = successReposne;
+          console.log(successReposne);
+          this.todoObject = successReposne[0];
           this.buttonName = "Update";
         },
         error: (error)=>{

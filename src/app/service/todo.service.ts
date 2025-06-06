@@ -11,10 +11,7 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   getAllTodos(userId:string, name: string): Observable<any>{
-    const params = new HttpParams();
-    params.set('userId', userId);
-
-    return (this.http.get(appTodoUrl+"getAll/"+name,{params}));
+    return (this.http.get(appTodoUrl+"getAll/"+name,{params:{userId:userId}}));
   }
 
   deleteTodo(todoId: string): Observable<any>{

@@ -9,13 +9,13 @@
 
         <fieldset class="form-group">
             <label>Descrption</label>
-            <input type="text" class="form-control" #name="ngModel" name="descrption" [(ngModel)]="todoObject.description" required="required">
+            <input type="text" class="form-control" #name="ngModel" name="description" [(ngModel)]="todoObject.description" required="required">
             <span *ngIf="todoForm.touched && todoForm.invalid" class="alert alert-warning">Descrption is required</span>
         </fieldset>
 
         <fieldset class="form-group">
             <label>Target Date</label>
-            <input type="date" class="form-control" name="targetDate" [ngModel]="todoObject.targetDate |date: 'yyyy-MM-dd'" 
+            <input type="date" class="form-control" name="targetDate" [ngModel]="todoObject.endTime |date: 'yyy-MM-dd'" 
                  (ngModelChange)="todoObject.targetDate = $event">
         </fieldset>
         <div>

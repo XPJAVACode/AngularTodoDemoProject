@@ -13,9 +13,10 @@ export class AuthenticationServiceService {
   handleBEAuthentication(postData:any){
     return (this.http.post(appUrl+'login', postData, {headers : {'Content-Type': 'application/json'}, observe: 'response'}).pipe(
       map(data=>{
-         const token = data.headers.get('Authorizzation');
-         if(token){
-          
+         const token = data.headers.get('Authorization');
+         const userId = data.headers.get('userid');
+         if(token && userId){
+          sessionStorage.setItem("user_id", userId);
           sessionStorage.setItem("Auth_token", token);
          }
          return data;
