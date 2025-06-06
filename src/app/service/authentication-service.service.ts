@@ -33,4 +33,9 @@ export class AuthenticationServiceService {
     }
     return null;
   }
+
+  logoutUser(){
+    sessionStorage.removeItem("Auth_Token");
+    sessionStorage.removeItem("user_id");
+  }
 }

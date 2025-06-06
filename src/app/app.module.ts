@@ -12,6 +12,9 @@ import { WelcomeComponent } from './welcome/welcome/welcome.component';
 import { HttpInterceptorService } from './service/http/http-interceptor.service';
 import { TodoComponent } from './todo/todo.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ErrorComponent } from './error/error.component';
+import { MenuComponent } from './menu/menu.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { RegistrationComponent } from './registration/registration.component';
     FooterComponent,
     WelcomeComponent,
     TodoComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ErrorComponent,
+    MenuComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
