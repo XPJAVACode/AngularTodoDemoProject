@@ -27,5 +27,11 @@ export class WelcomeComponent implements OnInit{
    });
   }
 
+
+  //Oauth 2.0 -> Oauth 3.0 vs JWT
+ //Attacks
+ // 2PC->Saga and Dual write Problem
+// N+1 problem
+// API design
   
 }

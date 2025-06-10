@@ -20,6 +20,16 @@
             <div *ngIf="registerForm.controls['email'].errors?.['email']">Please enter a valid email</div>
           </div>
         </div>
+        <!--hobby.value = [this.fb.control('', Validators.required)-->
+        <div class="mb-3">
+          <label class="form-label">Hobbies</label>
+          <button class="btn btn-primary" type="button" (click)="addHobies()"> Add Hobbies</button>
+          <div formArrayName="hobbies">
+            <div *ngFor="let hobby of hobbies.controls; let i=index" class="input-group mb-2">
+              <input type="text" class="form-control" [formControlName]="i">
+            </div>
+          </div>
+        </div>
   
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
@@ -33,13 +43,17 @@
   
         <div class="mb-3">
           <label for="confirmPassword" class="form-label">Confirm Password</label>
-          <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control" />
+          <input id="confirmPassword" formControlName="confirmPassword"
+            (copy)="disableCopy($event)"
+            (paste)="disableCopy($event)"
+            (cut)="disableCopy($event)"  
+            type="password" class="form-control" />
           <div *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched" class="text-danger mt-1">
             Passwords do not match
           </div>
         </div>
   
-        <button type="submit" class="btn btn-primary w-100">Register</button>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">Register</button>
       </form>
     </div>
   </div>

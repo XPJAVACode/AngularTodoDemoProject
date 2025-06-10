@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, Form, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -14,11 +14,20 @@ export class RegistrationComponent implements OnInit{
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
+      hobbies: this.fb.array([this.fb.control('', Validators.required)]),
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
       confirmPassword: ['', Validators.required]
     }, {
       validators: this.passwordValidator
     });
+  }
+
+  get hobbies(): FormArray{
+    return this.registerForm.get('hobbies') as FormArray;
+  }
+
+  addHobies(){
+    this.hobbies.push(this.fb.control('', Validators.required));
   }
   passwordValidator(formGroup: AbstractControl): ValidationErrors | null {
     const password = formGroup.get('password')?.value;
@@ -28,6 +37,9 @@ export class RegistrationComponent implements OnInit{
       return { passwordMismatch: true };
     }
     return null;
+  }
+  disableCopy(event : ClipboardEvent){
+    event.preventDefault();
   }
 
   onSubmit() {
