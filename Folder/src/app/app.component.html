@@ -1,0 +1,15 @@
+<h1>Pure pipe Example</h1>
+<p>{{username | myCustomPipe}}</p>
+<button (click)="changeUserName()"> Chnage Username </button>
+<hr/>
+
+<h1>Impure pipe example</h1>
+<input type="text" [(ngModel)]="searchText" placeholder="search for fruits...."/>
+
+<ul>
+    <li *ngFor="let fruit of fruits | filter: searchText">
+        {{fruit}}
+    </li>
+</ul>
+
+<button (click)="addFruit()"> Add Fruit </button>
